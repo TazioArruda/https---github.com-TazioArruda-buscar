@@ -16,6 +16,10 @@ const ProductForm = ({ addProduct }:ProductFormProps) => {
     e.preventDefault();
     if (name && price && quantity) {
       addProduct({ name, description, price: parseFloat(price), quantity: parseInt(quantity) });
+      setName('');
+      setDescription('');
+      setPrice('');
+      setQuantity('');
 
     } else {
       alert('Todos os campos devem ser preenchidos.');
