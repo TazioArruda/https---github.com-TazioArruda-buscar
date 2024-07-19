@@ -1,6 +1,7 @@
-
-import './style.css';
+import { useTheme } from 'styled-components';
 import { Product } from '../../types';
+import { Button, Card, Details, Header } from './ProductCard.styles';
+
 
 type ProductCardProps = {
   product: Product;
@@ -9,13 +10,15 @@ type ProductCardProps = {
 }
 
 const ProductCard = ({ product, removeProduct, updateProductQuantity }: ProductCardProps) => {
+  const { theme } = useTheme();
+
   const handleRemoveClick = () => {
     if (window.confirm(`Tem certeza que deseja remover o produto ${product.name}?`)) {
       removeProduct(product.name);
     }
   };
 
-  const handleQuantityChange = (e: any ) => {
+  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newQuantity = parseInt(e.target.value, 10);
     if (!isNaN(newQuantity) && newQuantity >= 0) {
       updateProductQuantity(product.name, newQuantity);
@@ -25,19 +28,19 @@ const ProductCard = ({ product, removeProduct, updateProductQuantity }: ProductC
   };
 
   return (
-    <div className="product-card">
-      <h3>{product.name}</h3>
-      <p>{product.description}</p>
-      <p>Preço: R${product.price}</p>
-      <p>Quantidade: 
+    <Card className={theme}>
+      <Header>{product.name}</Header>
+      <Details>{product.description}</Details>
+      <Details>Preço: R${product.price}</Details>
+      <Details>Quantidade: 
         <input 
           type="number" 
           value={product.quantity} 
           onChange={handleQuantityChange}
         />
-      </p>
-      <button onClick={handleRemoveClick}>Remover</button>
-    </div>
+      </Details>
+      <Button onClick={handleRemoveClick}>Remover</Button>
+    </Card>
   );
 };
 

@@ -3,8 +3,11 @@ import { Product } from './types';
 import './App.css';
 import ProductForm from './components/ProductForm/product';
 import ProductList from './components/ProductList/list';
+import { useTheme } from './components/context/themeContext';
+
 
 const App = () => {
+  const { theme, toggleTheme } = useTheme();
   const [products, setProducts] = useState<Product[]>([]);
 
   const addProduct = (product: Product) => {
@@ -24,7 +27,10 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div className={`App ${theme}`}>
+      <button onClick={toggleTheme}>
+        Alternar para tema {theme === 'claro' ? 'escuro' : 'claro'}
+      </button>
       <h1>Controle de Estoque</h1>
       <ProductForm addProduct={addProduct} />
       <ProductList 

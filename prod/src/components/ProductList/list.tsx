@@ -1,5 +1,6 @@
-import { Product } from "../../types";
-import ProductCard from "../ProoctCard/card";
+import React from 'react';
+import { Product } from '../../types';
+import ProductCard from '../ProoctCard/card';
 
 
 type ProductListProps = {
@@ -8,7 +9,7 @@ type ProductListProps = {
   updateProductQuantity: (productName: string, newQuantity: number) => void;
 }
 
-const ProductList = ({ products, removeProduct, updateProductQuantity }: ProductListProps) => {
+const ProductList: React.FC<ProductListProps> = ({ products, removeProduct, updateProductQuantity }) => {
   return (
     <div>
       {products.length === 0 ? (

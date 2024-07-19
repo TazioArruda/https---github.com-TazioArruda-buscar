@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Product } from '../../types';
+import { useTheme } from 'styled-components';
 
 
 type ProductFormProps = {
@@ -7,6 +8,7 @@ type ProductFormProps = {
 }
 
 const ProductForm = ({ addProduct }:ProductFormProps) => {
+  const {theme} = useTheme();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
@@ -27,7 +29,7 @@ const ProductForm = ({ addProduct }:ProductFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={theme}>
       <input 
         type="text" 
         placeholder="Nome" 
