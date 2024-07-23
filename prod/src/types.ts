@@ -3,4 +3,5 @@ export interface Product {
     description: string;
     price: number;
     quantity: number;
+    category: "Comida" | "Bebida" | "Não comestível";
   }

@@ -10,22 +10,33 @@ type ProductListProps = {
 }
 
 const ProductList: React.FC<ProductListProps> = ({ products, removeProduct, updateProductQuantity }) => {
+  const categorizedProducts = {
+    Comida: products.filter(product => product.category === 'Comida'),
+    Bebida: products.filter(product => product.category === 'Bebida'),
+    'Não comestível': products.filter(product => product.category === 'Não comestível')
+  };
+
   return (
     <div>
-      {products.length === 0 ? (
-        <p>Nenhum produto no estoque.</p>
-      ) : (
-        <div className="product-card-container">
-          {products.map(product => (
-            <ProductCard 
-              key={product.name} 
-              product={product} 
-              removeProduct={removeProduct} 
-              updateProductQuantity={updateProductQuantity}
-            />
-          ))}
+      {Object.entries(categorizedProducts).map(([category, products]) => (
+        <div key={category}>
+          <h2>{category}</h2>
+          {products.length === 0 ? (
+            <p>Nenhum produto na categoria {category}.</p>
+          ) : (
+            <div className="product-card-container">
+              {products.map(product => (
+                <ProductCard 
+                  key={product.name} 
+                  product={product} 
+                  removeProduct={removeProduct} 
+                  updateProductQuantity={updateProductQuantity}
+                />
+              ))}
+            </div>
+          )}
         </div>
-      )}
+      ))}
     </div>
   );
 };

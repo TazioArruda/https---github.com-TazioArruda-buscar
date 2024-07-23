@@ -1,12 +1,9 @@
+// src/components/ProductList/ProductList.styles.tsx
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const ProductCardContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-export const Message = styled.p`
-  font-size: 18px;
-  color: #888;
+  flex-wrap: wrap; // Permite que os itens se movam para a próxima linha
+  gap: 10px; // Espaçamento entre os itens
+  margin-bottom: 20px;
 `;

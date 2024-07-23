@@ -39,6 +39,7 @@ const ProductCard = ({ product, removeProduct, updateProductQuantity }: ProductC
           onChange={handleQuantityChange}
         />
       </Details>
+      <Details>Categoria: {product.category}</Details>
       <Button onClick={handleRemoveClick}>Remover</Button>
     </Card>
   );
