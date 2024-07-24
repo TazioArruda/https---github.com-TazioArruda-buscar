@@ -1,7 +1,7 @@
 import React from 'react';
 import { Product } from '../../types';
+import { ProductCardContainer } from './ProductList.styles';
 import ProductCard from '../ProoctCard/card';
-
 
 type ProductListProps = {
   products: Product[];
@@ -20,11 +20,11 @@ const ProductList: React.FC<ProductListProps> = ({ products, removeProduct, upda
     <div>
       {Object.entries(categorizedProducts).map(([category, products]) => (
         <div key={category}>
-          <h2>{category}</h2>
+          <h2>{`${category} (${products.length})`}</h2>
           {products.length === 0 ? (
             <p>Nenhum produto na categoria {category}.</p>
           ) : (
-            <div className="product-card-container">
+            <ProductCardContainer>
               {products.map(product => (
                 <ProductCard 
                   key={product.name} 
@@ -33,7 +33,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, removeProduct, upda
                   updateProductQuantity={updateProductQuantity}
                 />
               ))}
-            </div>
+            </ProductCardContainer>
           )}
         </div>
       ))}

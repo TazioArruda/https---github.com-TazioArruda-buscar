@@ -1,11 +1,10 @@
-// src/components/ProductCard/ProductCard.styles.tsx
 import styled from 'styled-components';
 
 export const Card = styled.div`
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
-  width: 200px; // Largura do card para permitir até 4 por linha
+  width: calc(25% - 10px); // Calcula a largura para que 4 cards caibam em uma linha, descontando o gap
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 
   &.claro {

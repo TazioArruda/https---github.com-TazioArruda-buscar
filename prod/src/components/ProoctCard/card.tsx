@@ -2,7 +2,6 @@ import { useTheme } from 'styled-components';
 import { Product } from '../../types';
 import { Button, Card, Details, Header } from './ProductCard.styles';
 
-
 type ProductCardProps = {
   product: Product;
   removeProduct: (name: string) => void;
