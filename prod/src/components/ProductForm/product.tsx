@@ -1,21 +1,20 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Product } from '../../types';
 import { useTheme } from 'styled-components';
 
-
 type ProductFormProps = {
   addProduct: (product: Product) => void;
-}
+};
 
-const ProductForm = ({ addProduct }:ProductFormProps) => {
-  const {theme} = useTheme();
+const ProductForm = ({ addProduct }: ProductFormProps) => {
+  const { theme } = useTheme();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState('');
   const [category, setCategory] = useState<'Comida' | 'Bebida' | 'Não comestível'>('Comida');
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (name && price && quantity) {
       addProduct({ name, description, price: parseFloat(price), quantity: parseInt(quantity), category });
@@ -23,8 +22,7 @@ const ProductForm = ({ addProduct }:ProductFormProps) => {
       setDescription('');
       setPrice('');
       setQuantity('');
-      setCategory('Comida')
-
+      setCategory('Comida');
     } else {
       alert('Todos os campos devem ser preenchidos.');
     }

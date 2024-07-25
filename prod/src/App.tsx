@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { Product } from './types';
 import './App.css';
-import ProductForm from './components/ProductForm/product';
-import ProductList from './components/ProductList/list';
 import { useTheme } from './components/context/themeContext';
-
+import Routes from './routers/routes';
 
 const App = () => {
   const { theme, toggleTheme } = useTheme();
@@ -32,11 +30,11 @@ const App = () => {
         Alternar para tema {theme === 'claro' ? 'escuro' : 'claro'}
       </button>
       <h1>Controle de Estoque</h1>
-      <ProductForm addProduct={addProduct} />
-      <ProductList 
-        products={products} 
-        removeProduct={removeProduct} 
-        updateProductQuantity={updateProductQuantity} 
+      <Routes
+        products={products}
+        addProduct={addProduct}
+        removeProduct={removeProduct}
+        updateProductQuantity={updateProductQuantity}
       />
     </div>
   );

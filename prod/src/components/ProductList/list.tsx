@@ -3,11 +3,12 @@ import { Product } from '../../types';
 import { ProductCardContainer } from './ProductList.styles';
 import ProductCard from '../ProoctCard/card';
 
+
 type ProductListProps = {
   products: Product[];
   removeProduct: (name: string) => void;
   updateProductQuantity: (productName: string, newQuantity: number) => void;
-}
+};
 
 const ProductList: React.FC<ProductListProps> = ({ products, removeProduct, updateProductQuantity }) => {
   const categorizedProducts = {
